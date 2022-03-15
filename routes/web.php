@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FileController::class, 'index'])->name('index');
+Route::post('/', [FileController::class, 'store'])->name('store');
+Route::get('download/{uuid}', [FileController::class, 'download'])->name('download');
